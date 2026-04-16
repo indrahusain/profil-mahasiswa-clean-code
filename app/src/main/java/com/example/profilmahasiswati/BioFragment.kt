@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 
 class BioFragment : Fragment() {
 
+    private var jumlahKlik = 0 // ganti dari global jadi lokal
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,7 +32,7 @@ class BioFragment : Fragment() {
             🏫 Kampus: Universitas Muhammadiyah Kalimantan Timur
         """.trimIndent()
 
-        tvKlik.text = "Klik: ${MainActivity.jumlahKlikGlobal}"
+        tvKlik.text = "Klik: $jumlahKlik"
 
         btnKlik.setOnClickListener {
 
@@ -44,8 +46,8 @@ class BioFragment : Fragment() {
             anim.repeatCount = 1
             btnKlik.startAnimation(anim)
 
-            MainActivity.jumlahKlikGlobal++
-            tvKlik.text = "Tombol diklik ${MainActivity.jumlahKlikGlobal} kali"
+            jumlahKlik++
+            tvKlik.text = "Tombol diklik $jumlahKlik kali"
 
             Toast.makeText(requireContext(), "🔥 Klik berhasil!", Toast.LENGTH_SHORT).show()
         }
